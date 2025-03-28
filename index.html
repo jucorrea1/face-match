@@ -163,6 +163,8 @@
     submitBtn.onclick = () => {
       const image = canvas.toDataURL('image/jpeg', 0.5); // Comprimir
       const selectedToken = document.querySelector('input[name="fotoSelecionada"]:checked')?.value;
+      const timestamp = new Date().getTime();
+      formData.append("ts", timestamp); // ← aqui adicionamos o timestamp extra
 
       if (!selectedToken) {
         alert("Selecione uma imagem da galeria antes de submeter.");
