@@ -164,7 +164,6 @@
       const image = canvas.toDataURL('image/jpeg', 0.5); // Comprimir
       const selectedToken = document.querySelector('input[name="fotoSelecionada"]:checked')?.value;
       const timestamp = new Date().getTime();
-      formData.append("ts", timestamp); // ← aqui adicionamos o timestamp extra
 
       if (!selectedToken) {
         alert("Selecione uma imagem da galeria antes de submeter.");
@@ -174,7 +173,8 @@
       const formData = new FormData();
       formData.append("image_base64", image);
       formData.append("face_token", selectedToken);
-
+      formData.append("ts", timestamp);
+      
       fetch('https://hook.us2.make.com/qodu75oxf2p360zf6nxkqmpsrw8wa6mq', {
         method: 'POST',
         body: formData
